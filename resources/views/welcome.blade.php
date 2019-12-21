@@ -1,3 +1,4 @@
+@extends('layouts.master')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -83,6 +84,8 @@
                 <div class="title m-b-md">
                     Laravel
                 </div>
+
+                <button type="button" class="btn btn-primary">Primary</button>
 
                 <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
