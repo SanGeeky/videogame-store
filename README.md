@@ -12,21 +12,21 @@
 
 ## Routes
 
-|      **View**               | **Folder** | **Asociated View** |
-| -------------------------: | :----: | :------------ |
-| login.blade.php               | resources/views/auth | login |
-| game_index.blade.php               | resources/views/game  | games          |
-| show_game.blade.php               | resources/views/game  | games/show/{id} |
-| platform_index.blade.php               | resources/views/platform | platforms |
-| show_platform.blade.php               | resources/views/platform | platforms/show/{id} |
-| character_index.blade.php               | resources/views/character | characters |
-| show_character.blade.php               | resources/views/character | characters/show/{id} |
-| company_index.blade.php               | resources/views/company | companies |
-| show_company.blade.php               | resources/views/company | companies/show/{id} |
-| review_index.blade.php               | resources/views/review | reviews |
-| show_review.blade.php               | resources/views/review | reviews/show/{id} |
-| genre_index.blade.php               | resources/views/genre | genres |
-| show_genre.blade.php               | resources/views/genre | genres/show/{id} |
+|      View                 |           Folder             |     Asociated View   |
+| -----------------------:  | :--------------------------: | :------------------- |
+| login.blade.php           | resources/views/vg/auth      | login                |
+| game_index.blade.php      | resources/views/vg/game      | games                |
+| show_game.blade.php       | resources/views/vg/game      | games/show/{id}      |
+| platform_index.blade.php  | resources/views/vg/platform  | platforms            |
+| show_platform.blade.php   | resources/views/vg/platform  | platforms/show/{id}  |
+| character_index.blade.php | resources/views/vg/character | characters           |
+| show_character.blade.php  | resources/views/vg/character | characters/show/{id} |
+| company_index.blade.php   | resources/views/vg/company   | companies            |
+| show_company.blade.php    | resources/views/vg/company   | companies/show/{id}  |
+| review_index.blade.php    | resources/views/vg/review    | reviews              |
+| show_review.blade.php     | resources/views/vg/review    | reviews/show/{id}    |
+| genre_index.blade.php     | resources/views/vg/genre     | genres               |
+| show_genre.blade.php      | resources/views/vg/genre     | genres/show/{id}     |
 
 
 
