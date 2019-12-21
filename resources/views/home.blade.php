@@ -1,6 +1,7 @@
 @extends('layouts.master')
+
+@section('title') Home Page @stop
  
 @section('content')
-    Main view
-    <div class="btn btn-primary">Hello</div>
+    Home
 @stop

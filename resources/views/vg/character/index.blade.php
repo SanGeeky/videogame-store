@@ -1,5 +1,7 @@
 @extends('layouts.master')
+
+@section('title') Characters @stop
  
 @section('content')
-    Character catalog
+    Characters
 @stop

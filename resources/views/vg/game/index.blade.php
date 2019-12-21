@@ -1,6 +1,7 @@
 @extends('layouts.master')
+
+@section('title') Games @stop
  
 @section('content')
-    <p>Game catalog</p>
-    Games Array: {{$gamesArray}}
+    Games
 @stop

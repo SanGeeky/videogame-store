@@ -1,5 +1,7 @@
 @extends('layouts.master')
+
+@section('title') Companies @stop
  
 @section('content')
-    Company catalog
+    Companies
 @stop

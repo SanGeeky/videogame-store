@@ -1,5 +1,7 @@
 @extends('layouts.master')
+
+@section('title') Platforms @stop
  
 @section('content')
-    Platform catalog
+    Platform
 @stop

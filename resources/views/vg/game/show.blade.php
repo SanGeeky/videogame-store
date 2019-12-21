@@ -1,5 +1,7 @@
 @extends('layouts.master')
+
+@section('title') Game details @stop
  
 @section('content')
-    Game detail of game #{{$id}}
+    Game
 @stop
