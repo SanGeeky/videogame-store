@@ -14,7 +14,7 @@
 
 |      View                   | Folder | Asociated View |
 | :------------------------- | :----: | :------------: |
-| `login.blade.php`               | `resources/views/auth` | `login` |
+| login.blade.php               | resources/views/auth | login |
 | `game_index.blade.php`               | `resources/views/game`  | `games`          |
 | `show_game.blade.php`               | `resources/views/game`  | `games/show/{id}` |
 | `platform_index.blade.php`               | `resources/views/platform` | `platforms` |
