@@ -153,27 +153,27 @@
                                 VideoGames
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" ><i class="fa fa-fw fa-gamepad"></i>Games <span class="badge badge-success">6</span></a>
+                                <a class="nav-link active" href="{{url('games')}}"  ><i class="fa fa-fw fa-gamepad"></i>Games <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" ><i class="fa fa-fw fa-user-circle"></i>Characters <span class="badge badge-success">6</span></a>
+                                <a class="nav-link active" href="{{url('characters')}}"  ><i class="fa fa-fw fa-user-circle"></i>Characters <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" ><i class="fa fa-fw fa-list-alt"></i>Genres <span class="badge badge-success">6</span></a>
+                                <a class="nav-link active" href="{{url('genres')}}"  ><i class="fa fa-fw fa-list-alt"></i>Genres <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" ><i class="fa fa-fw fa-tv"></i>Platforms <span class="badge badge-success">6</span></a>
+                                <a class="nav-link active" href="{{url('platforms')}}"  ><i class="fa fa-fw fa-tv"></i>Platforms <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" ><i class="fa fa-fw fa-building"></i>Companies <span class="badge badge-success">6</span></a>
+                                <a class="nav-link active" href="{{url('companies')}}"  ><i class="fa fa-fw fa-building"></i>Companies <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1" ><i class="fa fa-fw fa-file"></i>Reviews <span class="badge badge-success">6</span></a>
+                                <a class="nav-link active" href="{{url('reviews')}}"  ><i class="fa fa-fw fa-file"></i>Reviews <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-divider">
@@ -206,7 +206,7 @@
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                             <div class="page-header">
                                 <h2 class="pageheader-title">@yield('title')</h2>
-                                <p class="pageheader-text">Nulla euismod urna eros, sit amet scelerisque torton lectus vel mauris facilisis faucibus at enim quis massa lobortis rutrum.</p>
+                                <p class="pageheader-text">Pagehheader?.</p>
                                 <!-- <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -235,7 +235,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                             Copyright © 2018 Concept. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                             Copyright © 2019 Udenar &middot JuanPabloXT &middot El Pichi. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="text-md-right footer-links d-none d-sm-block">

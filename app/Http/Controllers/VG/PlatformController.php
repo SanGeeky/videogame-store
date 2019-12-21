@@ -14,7 +14,8 @@ class PlatformController extends Controller
      */
     public function index()
     {
-        //
+        $platforms = "Any platform get :)";
+        return view('vg.platform.index',array('platformsArray' => $platforms));
     }
 
     /**
@@ -46,7 +47,8 @@ class PlatformController extends Controller
      */
     public function show($id)
     {
-        //
+        $platform = "Null platform for now :) ";
+        return view('vg.platform.show',array('platform' => $platform,'id'=>$id));
     }
 
     /**
@@ -57,7 +59,8 @@ class PlatformController extends Controller
      */
     public function edit($id)
     {
-        //
+        $platform = "Null platform for now :) ";
+        return view('vg.platform.edit',array('platform' => $platform,'id'=>$id));
     }
 
     /**

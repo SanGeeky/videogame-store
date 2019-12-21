@@ -14,7 +14,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $companies = "Any company get :)";
+        return view('vg.company.index',array('companiesArray' => $companies));
     }
 
     /**
@@ -46,7 +47,8 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        //
+        $company = "Null company for now :) ";
+        return view('vg.company.show',array('company' => $company,'id'=>$id));
     }
 
     /**
@@ -57,7 +59,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $company = "Null company for now :) ";
+        return view('vg.company.edit',array('company' => $company,'id'=>$id));
     }
 
     /**

@@ -14,7 +14,8 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        $genres = "Any genre get :)";
+        return view('vg.genre.index',array('genresArray' => $genres));
     }
 
     /**
@@ -46,7 +47,8 @@ class GenreController extends Controller
      */
     public function show($id)
     {
-        //
+        $genre = "Null genre for now :) ";
+        return view('vg.genre.show',array('genre' => $genre,'id'=>$id));
     }
 
     /**
@@ -57,7 +59,8 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $genre = "Null genre for now :) ";
+        return view('vg.genre.edit',array('genre' => $genre,'id'=>$id));
     }
 
     /**

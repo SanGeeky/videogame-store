@@ -14,7 +14,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = "Any review get :)";
+        return view('vg.review.index',array('reviewsArray' => $reviews));
     }
 
     /**
@@ -46,7 +47,8 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        //
+        $review = "Null review for now :) ";
+        return view('vg.review.show',array('review' => $review,'id'=>$id));
     }
 
     /**
@@ -57,7 +59,8 @@ class ReviewController extends Controller
      */
     public function edit($id)
     {
-        //
+        $review = "Null review for now :) ";
+        return view('vg.review.edit',array('review' => $review,'id'=>$id));
     }
 
     /**

@@ -6,7 +6,7 @@ Route::get('/', function () {
 
 Route::resources([
     'characters' => 'VG\CharacterController',
-    'companies' => 'VG\GameController',
+    'companies' => 'VG\CompanyController',
     'games' => 'VG\GameController',
     'genres' => 'VG\GenreController',
     'platforms' => 'VG\PlatformController',

@@ -14,7 +14,8 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        //
+        $characters = "Any character get :)";
+        return view('vg.character.index',array('charactersArray' => $characters));
     }
 
     /**
@@ -46,7 +47,8 @@ class CharacterController extends Controller
      */
     public function show($id)
     {
-        //
+        $character = "Null character for now :) ";
+        return view('vg.character.show',array('character' => $character,'id'=>$id));
     }
 
     /**
@@ -57,7 +59,8 @@ class CharacterController extends Controller
      */
     public function edit($id)
     {
-        //
+        $character = "Null character for now :) ";
+        return view('vg.character.edit',array('character' => $character,'id'=>$id));
     }
 
     /**
