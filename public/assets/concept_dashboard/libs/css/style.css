@@ -1934,12 +1934,12 @@ Container / Wrapper
 .dashboard-wrapper {
     position: relative;
     left: 0;
-    margin-left: 264px;
+    margin-left: 210px;
     min-height: 870px !important;
 }
 
 .dashboard-content {
-    padding: 30px 30px 60px 30px;
+    padding: 50px 30px 60px 30px;
 }
 
 
