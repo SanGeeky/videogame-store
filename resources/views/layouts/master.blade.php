@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
- 
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ url('assets/concept_dashboard/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/concept_dashboard/vendor/charts/c3charts/c3.css') }}">
     <link rel="stylesheet" href="{{ url('assets/concept_dashboard/vendor/fonts/flag-icon-css/flag-icon.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
     <title>GameStore</title>
 </head>
 
@@ -179,12 +181,17 @@
                             <li class="nav-divider">
                                 Sales
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-heart"></i> My Games </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-list-ol"></i> My Wishlist </a>
-                            </li>
+                            @if(Auth::User()->role == 2)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">
+                                        <i class="fas fa-fw fa-heart"></i> My Games </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-list-ol"></i> My Wishlist </a>
+                                </li>
+                            @else
+                                <h4>Usted noooo</h4>
+                            @endif
                         </ul>
                     </div>
                 </nav>
@@ -222,8 +229,8 @@
                     <!-- ============================================================== -->
                     <!-- end pageheader  -->
                     <!-- ============================================================== -->
-                    
-            @yield('content') 
+
+            @yield('content')
 
 
                 </div>
@@ -280,5 +287,5 @@
     <script src="{{ url('assets/concept_dashboard/vendor/charts/c3charts/C3chartjs.js') }}"></script>
     <script src="{{ url('assets/concept_dashboard/libs/js/dashboard-ecommerce.js') }}"></script>
 </body>
- 
+
 </html>

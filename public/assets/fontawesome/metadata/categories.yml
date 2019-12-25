@@ -975,7 +975,7 @@ games:
     - steam-symbol
     - twitch
     - xbox
-  label: Games
+  label: Videogames
 gaming-tabletop:
   icons:
     - acquisitions-incorporated

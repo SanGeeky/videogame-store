@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\VG;
 
+use App\Videogames;
+use App\Genres;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,11 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = "Any game get :)";
-        return view('vg.game.index',array('gamesArray' => $games));
+        $games = Videogames::all();
+        $genres = Genres::all();
+        //dd($genre);
+        //Console Log en la Pagina para mostrar los datos
+        return view("vg.game.index", compact('games', 'genres'));
     }
 
     /**
@@ -25,7 +30,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

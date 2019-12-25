@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\VG;
 
+use App\Genres;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,10 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $genres = "Any genre get :)";
-        return view('vg.genre.index',array('genresArray' => $genres));
+        $genres = Genres::all();
+        //dd($genre);
+        //Console Log en la Pagina para mostrar los datos
+        return view("vg.genre.index", compact('genres'));
     }
 
     /**
@@ -25,7 +28,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view("vg.genre.create");
     }
 
     /**
@@ -36,7 +39,24 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $genre = new Genres();
+        $genre->name = $request->name;
+        $genre->description = $request->description;
+        $file = $request->file('image');
+
+        $image = $file->getClientOriginalName();
+        $file->move(public_path().'/images/genres/', $image);
+
+        $genre->image = $image;
+
+        /*$file=$request->file('imagen');
+        $name=$file->getClientOriginalName();
+        $file->move(public_path().'/images/',$name);
+        $noticas->imagen=$name;*/
+
+        //dd($genre);
+        $genre->save();
+        return redirect()->route('genres.index');
     }
 
     /**
@@ -59,8 +79,11 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        $genre = "Null genre for now :) ";
+        /*$genre = "Null genre for now :) ";
         return view('vg.genre.edit',array('genre' => $genre,'id'=>$id));
+        */
+        $genre = Genres::findOrFail($id);
+        return view("vg.genre.edit", compact('genre'));
     }
 
     /**
@@ -72,7 +95,22 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $genre = Genres::findOrFail($id);
+        $genre->name = $request->name;
+        $genre->description = $request->description;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $image = $file->getClientOriginalName();
+            $file->move(public_path() . '/images/genres/', $image);
+            $genre->image = $image;
+        }
+
+
+        //dd($genre);
+
+        $genre->update();
+        return redirect()->route('genres.index');
     }
 
     /**
@@ -83,6 +121,9 @@ class GenreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $genre = Genres::findOrFail($id);
+        $genre->delete();
+
+        return redirect()->route('genres.index');
     }
 }
