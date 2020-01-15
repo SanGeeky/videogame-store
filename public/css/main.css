@@ -1,0 +1,39 @@
+.fill {
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.fill img {
+    /*flex-shrink: 0;*/
+    /*min-width: 100%;*/
+    min-height: 100%;
+    max-width: 100%;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    /*object-fit: cover;*/
+    overflow: hidden;
+    position:absolute; 
+}
+
+.separated {
+	margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.small_img_container {
+    justify-content: center;
+    align-items: center;
+}
+
+.small_image {
+	/*max-width: 100%;*/
+	width: 280px;	
+    display: block;
+    /*width: 25vw;    */
+    height: 340px;
+    margin-left: auto;
+      margin-right: auto;
+    /*height: 70vh !important;*/
+}

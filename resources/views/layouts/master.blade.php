@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{ url('assets/concept_dashboard/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/concept_dashboard/vendor/charts/c3charts/c3.css') }}">
     <link rel="stylesheet" href="{{ url('assets/concept_dashboard/vendor/fonts/flag-icon-css/flag-icon.min.css') }}">
+    <link rel="stylesheet" href="{{ url('css/main.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
     <title>GameStore</title>
@@ -211,8 +212,8 @@
                     <!-- ============================================================== -->
                     <div class="row">
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                            <div class="page-header">
-                                <h2 class="pageheader-title">@yield('title')</h2>
+                            <div class="page-header border-bottom">
+                                <h1 style="text-align: center;" class="display-5">@yield('title')</h1>
                                 <p class="pageheader-text">Pagehheader?.</p>
                                 <!-- <div class="page-breadcrumb">
                                     <nav aria-label="breadcrumb">
@@ -235,28 +236,7 @@
 
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <div class="footer" style="position: fixed; bottom: 0;">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                             Copyright © 2019 Udenar &middot JuanPabloXT &middot El Pichi. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
-                        </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="text-md-right footer-links d-none d-sm-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- ============================================================== -->
-            <!-- end footer -->
-            <!-- ============================================================== -->
+            
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
@@ -264,6 +244,28 @@
     </div>
     <!-- ============================================================== -->
     <!-- end main wrapper  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <div class="footer" style="bottom: 0; padding-left: 190px;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                     Copyright © 2019 JuanPabloXT &middot El Pichi. All rights reserved. Dashboard by <a href="https://colorlib.com/wp/">Colorlib</a>.
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="text-md-right footer-links d-none d-sm-block">
+                        <a href="javascript: void(0);">About</a>
+                        <a href="javascript: void(0);">Support</a>
+                        <a href="javascript: void(0);">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end footer -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
     <!-- jquery 3.3.1 -->

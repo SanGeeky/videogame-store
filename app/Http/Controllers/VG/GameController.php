@@ -18,8 +18,6 @@ class GameController extends Controller
     {
         $games = Videogames::all();
         $genres = Genres::all();
-        //dd($genre);
-        //Console Log en la Pagina para mostrar los datos
         return view("vg.game.index", compact('games', 'genres'));
     }
 
@@ -41,15 +39,20 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        error_log("storing... ".$request);
         $g = new Videogames();
         $g->name = $request->input('name');
         $g->aliases = $request->aliases;
         $g->description = $request->description;
-        $g->image = $request->image;
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $fileName = $g->id.'.'.$extension;
+            $request->image->storeAs('public',$fileName);
+            $g->image = $fileName;
+        }
         $g->original_release_date = $request->original_release_date;
         $g->genre_id = $request->genre_id;
-        error_log("store result:".$g -> save());
+        $g -> save();
         return redirect()->route('games.index');
     }
 
@@ -61,7 +64,7 @@ class GameController extends Controller
      */
     public function show($id)
     {
-        $game = "Null game for now :) ";
+        $game = Videogames::findOrFail($id);
         return view('vg.game.show',array('game' => $game,'id'=>$id));
     }
 
@@ -73,8 +76,9 @@ class GameController extends Controller
      */
     public function edit($id)
     {
-        $game = "Null game for now :) ";
-        return view('vg.game.edit',array('game' => $game,'id'=>$id));
+        $game = Videogames::findOrFail($id);
+        $genres = Genres::all();
+        return view("vg.game.edit", compact('game', 'genres'));
     }
 
     /**
@@ -86,7 +90,21 @@ class GameController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $g = Videogames::findOrFail($id);
+        $g->name = $request->input('name');
+        $g->aliases = $request->aliases;
+        $g->description = $request->description;
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $fileName = $g->id.'.'.$extension;
+            $request->image->storeAs('public',$fileName);
+            $g->image = $fileName;
+        }
+        $g->original_release_date = $request->original_release_date;
+        $g->genre_id = $request->genre_id;
+        $g -> save();
+        return $this->index();
     }
 
     /**
@@ -97,6 +115,8 @@ class GameController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $game = Videogames::findOrFail($id);
+        $game->delete();
+        return $this->index();
     }
 }

@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title') Games @stop
+@section('title') Juegos disponibles @stop
 
 @section('content')
 
 <div class="container">
-    <div class="row">
+    <div class="row border-bottom" style="margin-bottom: 20px;">
         <div class="col-md-6">
             <select name="genre_id" class="form-control" style="margin-bottom: 24px;" id="select2">
                 @foreach($genres as $genre)
@@ -26,7 +26,15 @@
             <div class="card card-figure">
                 <figure class="figure">
                     <div class="figure-img">
-                        <img class="img-fluid" src="https://compass-ssl.xbox.com/assets/4d/d4/4dd4dc7e-964c-43cf-aac4-f7d03fc40172.jpg?n=1616161616_GLP-Page-Hero-1084_1920x1080.jpg" alt="Card image cap" style="width: 100vw;">
+
+                        <div class="small_img_container">
+                            @if(!is_null($game->image))
+                            <img class="img-fluid small_image" src="/storage/{{$game->image}}">
+                            @else
+                            <img class="img-fluid small_image" src="/images/gamepad.png">
+                            @endif
+                        </div>
+
                         
                         <div class="figure-tools">
                             <a href="#" class="tile tile-circle tile-sm mr-auto">
