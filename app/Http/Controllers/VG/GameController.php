@@ -41,7 +41,16 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        error_log("storing... ".$request);
+        $g = new Videogames();
+        $g->name = $request->input('name');
+        $g->aliases = $request->aliases;
+        $g->description = $request->description;
+        $g->image = $request->image;
+        $g->original_release_date = $request->original_release_date;
+        $g->genre_id = $request->genre_id;
+        error_log("store result:".$g -> save());
+        return redirect()->route('games.index');
     }
 
     /**
