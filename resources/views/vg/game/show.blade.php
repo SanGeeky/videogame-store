@@ -9,13 +9,13 @@
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pr-xl-0 pr-lg-0 pr-md-0  m-b-30" style="overflow:hidden;">
 
 				@if(!is_null($game->image))
-					<div class="product-slider fill">
-						<img src="/storage/{{$game->image}}" alt="Game image">
-					</div>
+				<div class="product-slider fill">
+					<img src="/storage/{{$game->image}}" alt="Game image">
+				</div>
 				@else
-					<div class="product-slider fill">
-						<img src="/images/gamepad.png" alt="Game image">
-					</div>
+				<div class="product-slider fill">
+					<img src="/images/gamepad.png" alt="Game image">
+				</div>
 				@endif
 
 			</div>
@@ -45,15 +45,18 @@
 					</div>
 
 					<div class="row" style="margin-top: 10px;margin-left: 5px;">
-						<a href="#" class="btn btn-rounded btn-primary separated">Comprar</a>
-						<a href="{{ route('games.edit', $game->id) }}" class="btn btn-rounded btn-secondary separated">Editar</a>
-						<form method="POST" action="{{ route('games.destroy', $game->id) }}">{{ method_field('DELETE') }}
-							{{ csrf_field() }}
-							<button class="btn btn-rounded btn-danger separated" type="submit"
-							onclick="return confirm('¿Esta seguro de eliminar este registro?')">
-							Eliminar
-							</button>
-						</form>
+						@if(!Auth::user()->isAdmin())
+								<a href="#" class="btn btn-rounded btn-primary separated">Comprar</a>
+						@else
+								<a href="{{ route('games.edit', $game->id) }}" class="btn btn-rounded btn-secondary separated">Editar</a>
+								<form method="POST" action="{{ route('games.destroy', $game->id) }}">{{ method_field('DELETE') }}
+									{{ csrf_field() }}
+									<button class="btn btn-rounded btn-danger separated" type="submit"
+									onclick="return confirm('¿Esta seguro de eliminar este registro?')">
+									Eliminar
+								</button>
+							</form>
+						@endif
 					</div>
 
 

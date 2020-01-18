@@ -13,9 +13,11 @@
                 @endforeach
             </select>        
         </div>
+        @if(Auth::user()->isAdmin())
         <div class="col-md-6">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float: right; margin-bottom: 10px;">Añadir</button>
+            <button type="button" class="btn btn-primary add-button" data-toggle="modal" data-target="#exampleModal">Añadir</button>
         </div>
+        @endif
         
     </div>
 
@@ -58,53 +60,6 @@
             @endforeach
         </div>
 
-
-    <!-- <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="float: right; margin-bottom: 10px;">
-                        Añadir
-                    </button>
-
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombre</th>
-                                <th scope="col">Descripción</th>
-                                <th scope="col">Imágenes</th>
-                                <th scope="col">Editar</th>
-                                <th scope="col">Eliminar</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($games as $game)
-                            <tr>
-                                <td scope="row">{{$game->name}}</td>
-                                <td scope="row">{{$game->Genre->name}}</td>
-                                <td>{{ $game->description }}</td>
-                                {{--<td><img src="{{ asset('images/games/'.$game->image) }}" class="rounded-circle" alt=""></td>
-                                --}}
-                                <td><a href="{{ route("games.edit", $game->id) }}">Edit</a></td>
-                                <td>
-                                    <form method="POST" action="{{ route("games.destroy", $game->id) }}">
-                                        {{ method_field('DELETE') }}
-                                        {{ csrf_field() }}
-                                        <button type="submit"
-                                        onclick="return confirm('¿Esta seguro de eliminar este registro?')" class="btn btn-sm">
-                                        <i class="fa fa-trash"></i>
-
-                                        Destroy
-                                    </button></td>
-                                </form>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div> -->
-    </div>
 </div>
 
 

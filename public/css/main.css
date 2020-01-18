@@ -29,11 +29,17 @@
 
 .small_image {
 	/*max-width: 100%;*/
-	width: 280px;	
+	width: 200px;	
     display: block;
     /*width: 25vw;    */
-    height: 340px;
+    height: 280px;
     margin-left: auto;
       margin-right: auto;
     /*height: 70vh !important;*/
+}
+
+.add-button 
+{
+    float: right; 
+    margin-bottom: 10px;
 }
