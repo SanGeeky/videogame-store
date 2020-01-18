@@ -4,6 +4,8 @@ namespace App\Http\Controllers\VG;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Character;
+use App\Genres;
 
 class CharacterController extends Controller
 {
@@ -14,8 +16,9 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        $characters = "Any character get :)";
-        return view('vg.character.index',array('charactersArray' => $characters));
+        $characters = Character::all();
+        $genres = Genres::all();
+        return view("vg.character.index", compact('characters', 'genres'));
     }
 
     /**
