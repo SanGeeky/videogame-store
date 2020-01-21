@@ -19,7 +19,7 @@ class CreateGamesTable extends Migration
             $table->string('aliases', 100);
             $table->longText('description');
             $table->string('image', 200)->nullable();
-            $table->date('original_release_date');
+            $table->date('release_date');
 
             $table->unsignedBigInteger('genre_id');
             $table->foreign('genre_id')->references('id')->on('genres');
