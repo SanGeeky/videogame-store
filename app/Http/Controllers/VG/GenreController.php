@@ -42,6 +42,7 @@ class GenreController extends Controller
         $genre = new Genres();
         $genre->name = $request->name;
         $genre->description = $request->description;
+
         $file = $request->file('image');
 
         $image = $file->getClientOriginalName();

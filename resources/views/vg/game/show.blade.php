@@ -8,13 +8,13 @@
 		<div class="row">
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pr-xl-0 pr-lg-0 pr-md-0  m-b-30" style="overflow:hidden;">
 
-				@if(!is_null($game->image))
+				@if(strstr( $game->image, 'http' ) == true )
 				<div class="product-slider fill">
-					<img src="/storage/{{$game->image}}" alt="Game image">
+					<img src="{{$game->image}}" alt="Game image">
 				</div>
 				@else
 				<div class="product-slider fill">
-					<img src="/images/gamepad.png" alt="Game image">
+					<img src="{{ asset('images/games/'.$game->image) }}" alt="Game image">
 				</div>
 				@endif
 
@@ -32,7 +32,7 @@
 						</div>
 						<h3 class="mb-0 text-primary">$49.00</h3>
 					</div>
-					
+
 
 					<div class="product-size border-bottom">
 						<span class="badge badge-primary">Genero: {{$game->Genre->name}}</span>
