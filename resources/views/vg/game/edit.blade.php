@@ -24,9 +24,9 @@
 			</div>
 
 			<div class="form-group row">
-				<label for="original_release_date" class="col-3 col-lg-2 col-form-label text-right">Lanzamiento</label>
+				<label for="release_date" class="col-3 col-lg-2 col-form-label text-right">Lanzamiento</label>
 				<div class="col-9 col-lg-10">
-					<input id="original_release_date" name="original_release_date" required="yes" placeholder="Fecha de lanzamiento" class="form-control" value="{{$game->original_release_date}}">
+					<input id="release_date" name="release_date" required="yes" placeholder="Fecha de lanzamiento" class="form-control" value="{{$game->release_date}}">
 				</div>
 			</div>
 
@@ -51,13 +51,13 @@
 
 			<div class="form-group row">
 				<label for="image" class="col-3 col-lg-2 col-form-label text-right"></label>
-				<div class="col-9 col-lg-10">                            
+				<div class="col-9 col-lg-10">
 					<div class="custom-file">
 						<input type="file" class="custom-file-input" id="image" name="image">
 						<label class="custom-file-label" for="image">Imagen <span>{{$game->image}}</span></label>
 					</div>
 				</div>
-			</div> 
+			</div>
 
 			<div class="modal-footer">
 				<button type="submit" class="btn btn-primary">Guardar</button>

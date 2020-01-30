@@ -92,9 +92,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="original_release_date" class="col-3 col-lg-2 col-form-label text-right">Lanzamiento</label>
+                        <label for="release_date" class="col-3 col-lg-2 col-form-label text-right">Lanzamiento</label>
                         <div class="col-9 col-lg-10">
-                            <input id="original_release_date" name="original_release_date" required="yes" placeholder="Fecha de lanzamiento" class="form-control">
+                            <input id="release_date" name="release_date" required="yes" placeholder="Fecha de lanzamiento" class="form-control">
                         </div>
                     </div>
 

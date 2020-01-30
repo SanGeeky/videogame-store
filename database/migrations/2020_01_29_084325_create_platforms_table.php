@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGamesTable extends Migration
+class CreatePlatformsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,18 @@ class CreateGamesTable extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('platforms', function (Blueprint $table) {
             $table->bigIncrements('id');
+
             $table->string('name', 100);
             $table->string('aliases', 100)->nullable();
-            $table->longText('description')->nullable();
-            $table->string('image', 200)->nullable();
+            $table->mediumText('description')->nullable();
             $table->date('release_date')->nullable();
+            $table->string('image', 200)->nullable();
 
-            $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')->references('id')->on('genres');
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')->references('id')->on('companies');
+
 
             $table->timestamps();
         });
@@ -35,6 +37,6 @@ class CreateGamesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('platforms');
     }
 }

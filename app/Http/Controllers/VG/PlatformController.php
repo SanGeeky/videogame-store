@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\VG;
 
+use App\Platforms;
+use App\Companies;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,8 +16,9 @@ class PlatformController extends Controller
      */
     public function index()
     {
-        $platforms = "Any platform get :)";
-        return view('vg.platform.index',array('platformsArray' => $platforms));
+        $platforms = Platforms::all();
+        $companies = Companies::all();
+        return view("vg.platform.index", compact('platforms', 'companies'));
     }
 
     /**
@@ -36,7 +39,25 @@ class PlatformController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $platform = new Platforms();
+        $platform->name = $request->input('name');
+        $platform->aliases = $request->aliases;
+        $platform->description = $request->description;
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $fileName = $platform->name.'.'.$extension;
+
+            $file = $request->file('image');
+            $file->move(public_path().'/images/platforms/', $fileName);
+
+            $platform->image = $fileName;
+        }
+
+        $platform->release_date = $request->release_date;
+        $platform->company_id = $request->company_id;
+        $platform -> save();
+        return redirect()->route('platforms.index');
     }
 
     /**
@@ -47,8 +68,8 @@ class PlatformController extends Controller
      */
     public function show($id)
     {
-        $platform = "Null platform for now :) ";
-        return view('vg.platform.show',array('platform' => $platform,'id'=>$id));
+        $platform = Platforms::findOrFail($id);
+        return view('vg.platform.show',compact('platform'));
     }
 
     /**
@@ -59,8 +80,9 @@ class PlatformController extends Controller
      */
     public function edit($id)
     {
-        $platform = "Null platform for now :) ";
-        return view('vg.platform.edit',array('platform' => $platform,'id'=>$id));
+        $platform = Platforms::findOrFail($id);
+        $companies = Companies::all();
+        return view("vg.platform.edit", compact('platform', 'companies'));
     }
 
     /**
@@ -72,7 +94,24 @@ class PlatformController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $platform = Platforms::findOrFail($id);
+        $platform->name = $request->input('name');
+        $platform->aliases = $request->aliases;
+        $platform->description = $request->description;
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $fileName = $platform->id.'.'.$extension;
+
+            $file = $request->file('image');
+            $file->move(public_path().'/images/games/', $fileName);
+
+            $platform->image = $fileName;
+        }
+        $platform->release_date = $request->release_date;
+        $platform->company_id = $request->company_id;
+        $platform -> save();
+        return $this->index();
     }
 
     /**
@@ -83,6 +122,8 @@ class PlatformController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $platform = Platforms::findOrFail($id);
+        $platform->delete();
+        return $this->index();
     }
 }
