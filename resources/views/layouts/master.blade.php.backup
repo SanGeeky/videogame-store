@@ -166,6 +166,10 @@
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-item ">
+                                <a class="nav-link active" href="{{url('characters')}}"  ><i class="fa fa-fw fa-user-circle"></i>Characters <span class="badge badge-success">6</span></a>
+                                <div id="submenu-1" class="collapse submenu" style=""></div>
+                            </li>
+                            <li class="nav-item ">
                                 <a class="nav-link active" href="{{url('genres')}}"  ><i class="fa fa-fw fa-list-alt"></i>Genres <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
@@ -177,11 +181,6 @@
                                 <a class="nav-link active" href="{{url('companies')}}"  ><i class="fa fa-fw fa-building"></i>Companies <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
-                            @if(Auth::user()->isAdmin())
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="{{url('codes')}}"  ><i class="fa fa-fw fa-code"></i>Codes <span class="badge badge-success">6</span></a>
-                                <div id="submenu-1" class="collapse submenu" style=""></div>
-                            @endif
                             <li class="nav-item ">
                                 <a class="nav-link active" href="{{url('reviews')}}"  ><i class="fa fa-fw fa-file"></i>Reviews <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
@@ -243,7 +242,7 @@
 
                 </div>
             </div>
-
+            
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->

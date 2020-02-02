@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Videogames extends Model
@@ -14,6 +15,10 @@ class Videogames extends Model
     }
 
     public function platforms(){
-        return $this->belongsToMany(Platforms::class)->withTimestamps;
+        return $this->belongsToMany(Platforms::class)->withTimestamps();
+    }
+
+    public function purchases(){
+        return $this->belongsToMany(User::class, 'purchases')->withTimestamps();
     }
 }

@@ -46,7 +46,9 @@
 
 					<div class="row" style="margin-top: 10px;margin-left: 5px;">
 						@if(!Auth::user()->isAdmin())
-								<a href="#" class="btn btn-rounded btn-primary separated">Comprar</a>
+                                <button type="button" class="btn btn-rounded btn-primary separated" data-toggle="modal" data-target="#exampleModalCenter">
+                                    Comprar
+                                </button>
 						@else
 								<a href="{{ route('games.edit', $game->id) }}" class="btn btn-rounded btn-secondary separated">Editar</a>
 								<form method="POST" action="{{ route('games.destroy', $game->id) }}">{{ method_field('DELETE') }}
@@ -113,5 +115,37 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Comprar - {{$game->name}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{{ route('purchase') }}" enctype="multipart/form-data">
+                @method('PUT')
+                <div class="modal-body">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="Code">Ingrese Código</label>
+                            <input type="text" class="form-control" id="Code" name="code">
+                            <input type="hidden" id="user_id" name="user_id"  value="{{ Auth::user()->id }}">
+                            <input type="hidden" id="game_id" name="game_id"  value="{{ $game->id }}">
+                        </div>
+                </div>
+                <div class="modal-footer">
+{{--                    <a href="{{ route('codes.index') }}">BACK</a>--}}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary"> BUY </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 </div>
 @stop
