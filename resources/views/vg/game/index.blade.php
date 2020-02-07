@@ -50,7 +50,7 @@
 
                         <div class="card-body">
                             <h3 class="card-title">{{$game->name}}</h3>
-                            <p class="card-text">{{$game->description}}.</p>
+                            <p class="card-text shorten-text-index">{{$game->description}}.</p>
                         </div>
 
                     </figure>
