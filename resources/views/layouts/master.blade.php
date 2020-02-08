@@ -136,7 +136,14 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
+                                <!-- <a class="dropdown-item" href="{{ url('/logout') }}"><i class="fas fa-power-off mr-2"></i>Logout</a> -->
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="fas fa-power-off mr-2"></i>Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </div>
                         </li>
                     </ul>
@@ -186,10 +193,10 @@
                                 <a class="nav-link active" href="{{url('reviews')}}"  ><i class="fa fa-fw fa-file"></i>Reviews <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
-                            <li class="nav-divider">
-                                Sales
-                            </li>
-                            @if(Auth::User()->role == 2)
+                            @if(Auth::User()->role == User::ROLE_CLIENT)
+                                <li class="nav-divider">
+                                    Sales
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">
                                         <i class="fas fa-fw fa-heart"></i> My Games </a>
@@ -198,7 +205,7 @@
                                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-list-ol"></i> My Wishlist </a>
                                 </li>
                             @else
-                                <h4>Usted noooo</h4>
+                                <h4>You're an admin</h4>
                             @endif
                         </ul>
                     </div>
