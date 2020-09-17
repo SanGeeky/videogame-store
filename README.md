@@ -1,14 +1,20 @@
 # Laravel VideoGame Store
 
-<p align="center">
-	<img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400">
-	<img src="videogame.png" width="128">
-</p>
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-</p>
+## Installation
+
+### Previous steps
+
+You must setup the `gamestore` database first, **I used Postgres in my case:**
+
+```sql
+create database gamestore
+```
+If you want to use another DB name change it in the `.env` file along with credentials
+
+Install project dependencies with composer (this can take a long time):
+```php
+composer install
+```
 
 ## Routes
 
