@@ -3,22 +3,21 @@
 
 @section('content')
 
-<div class="row">
-	<div class="col-md-12">
-		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pr-xl-0 pr-lg-0 pr-md-0  m-b-30" style="overflow:hidden;">
+<div class="col">
+	<div class="row">
 
-				@if(!is_null($game->image))
-				<div class="product-slider fill">
-					<img src="/storage/{{$game->image}}" alt="Game image">
+			<div class="" style="overflow:hidden;">
+				@if(strstr( $game->image, 'http' ) == true )
+				<div class="center-img fill">
+					<img src="{{$game->image}}" alt="Game image">
 				</div>
 				@else
-				<div class="product-slider fill">
-					<img src="/images/gamepad.png" alt="Game image">
+				<div class="center-img fill">
+					<img src="{{ asset('images/games/'.$game->image) }}" alt="Game image">
 				</div>
 				@endif
-
 			</div>
+				
 			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pl-xl-0 pl-lg-0 pl-md-0 border-left m-b-30">
 				<div class="product-details">
 					<div class="border-bottom pb-3 mb-3">
@@ -32,7 +31,7 @@
 						</div>
 						<h3 class="mb-0 text-primary">$49.00</h3>
 					</div>
-					
+
 
 					<div class="product-size border-bottom">
 						<span class="badge badge-primary">Genero: {{$game->Genre->name}}</span>
@@ -41,12 +40,21 @@
 
 					<div class="product-description border-bottom">
 						<h4 class="mb-1">Descripción</h4>
-						<p>{{$game->description}}</p>
+						
+
+						<!-- <p class="shorten-text">{{$game->description}}</p>
+						<p>Esto se muestra siempre<span id="dots">...</span><span id="more">Esto se muestra al expandir el pinche texto.</span></p>
+						<a onclick="expandText()" id="myBtn" class="text-info">Read more</a> -->
+
+						<div class="comments-space">The Indian economy is the world's tenth-largest by nominal GDP and third-largest by purchasing power parity. Following market-based economic reforms in 1991, India became one of the fastest-growing major economies; it is considered a newly industrialised country. However, it continues to face the challenges of poverty, corruption, malnutrition, inadequate public healthcare, and terrorism. A nuclear weapons state and a regional power, it has the third-largest standing army in the world and ranks seventh in military expenditure among nations. India is a federal constitutional republic governed under a parliamentary system consisting of 28 states and 7 union territories. India is a pluralistic, multilingual, and multi-ethnic society. It is also home to a diversity of wildlife in a variety of protected habitats.</div>
+
 					</div>
 
 					<div class="row" style="margin-top: 10px;margin-left: 5px;">
 						@if(!Auth::user()->isAdmin())
-								<a href="#" class="btn btn-rounded btn-primary separated">Comprar</a>
+                                <button type="button" class="btn btn-rounded btn-primary separated" data-toggle="modal" data-target="#exampleModalCenter">
+                                    Comprar
+                                </button>
 						@else
 								<a href="{{ route('games.edit', $game->id) }}" class="btn btn-rounded btn-secondary separated">Editar</a>
 								<form method="POST" action="{{ route('games.destroy', $game->id) }}">{{ method_field('DELETE') }}
@@ -58,13 +66,12 @@
 							</form>
 						@endif
 					</div>
-
-
-
 				</div>
 			</div>
-		</div>
-		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 m-b-60">
+
+			</div>
+
+		<div class="row">
 			<div class="simple-card">
 				<ul class="nav nav-tabs" id="myTab5" role="tablist">
 					<li class="nav-item">
@@ -113,5 +120,37 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Comprar - {{$game->name}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{{ route('purchase') }}" enctype="multipart/form-data">
+                @method('PUT')
+                <div class="modal-body">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="Code">Ingrese Código</label>
+                            <input type="text" class="form-control" id="Code" name="code">
+                            <input type="hidden" id="user_id" name="user_id"  value="{{ Auth::user()->id }}">
+                            <input type="hidden" id="game_id" name="game_id"  value="{{ $game->id }}">
+                        </div>
+                </div>
+                <div class="modal-footer">
+{{--                    <a href="{{ route('codes.index') }}">BACK</a>--}}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary"> BUY </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 </div>
 @stop

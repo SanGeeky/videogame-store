@@ -1,12 +1,20 @@
 @extends('layouts.master')
 
-@section('title') Platforms @stop
+@section('title') Juegos comprados @stop
 
 @section('content')
+
     <div class="container">
         <div class="row border-bottom" style="margin-bottom: 20px;">
+            <div class="col-md-6">
+                <select name="genre_id" class="form-control" style="margin-bottom: 24px;" id="select2">
+                    @foreach($genres as $genre)
+                        <option value="{{ $genre->id }}"> {{ $genre->name }} </option>
+                    @endforeach
+                </select>
+            </div>
             @if(Auth::user()->isAdmin())
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <button type="button" class="btn btn-primary add-button" data-toggle="modal" data-target="#exampleModal">Añadir</button>
                 </div>
             @endif
@@ -14,7 +22,7 @@
         </div>
 
         <div class="row">
-            @foreach($platforms as $platform)
+            @foreach($games as $game)
                 <div class="col-xl-4 col-md-6 col-md-4">
 
                     <div class="card card-figure">
@@ -22,10 +30,10 @@
                             <div class="figure-img">
 
                                 <div class="small_img_container">
-                                    @if(strstr( $platform->image, 'http' ) == true )
-                                        <img class="img-fluid small_image" src="{{$platform->image}}">
+                                    @if(strstr( $game->image, 'http' ) == true )
+                                        <img class="img-fluid small_image" src="{{$game->image}}">
                                     @else
-                                        <img class="img-fluid small_image" src="{{ asset('images/platforms/'.$platform->image) }}">
+                                        <img class="img-fluid small_image" src="{{ asset('images/games/'.$game->image) }}">
                                     @endif
                                 </div>
 
@@ -33,16 +41,16 @@
                                 <div class="figure-tools">
                                     <a href="#" class="tile tile-circle tile-sm mr-auto">
                                         <span class="oi-data-transfer-download"></span></a>
-                                    <span class="badge badge-danger">{{$platform->Company->name}}</span>
+                                    <span class="badge badge-danger">{{$game->Genre->name}}</span>
                                 </div>
                                 <div class="figure-action">
-                                    <a href="{{ route('platforms.show', $platform->id) }}" class="btn btn-block btn-sm btn-primary">Detalles</a>
+                                    <a href="{{ route('games.show', $game->id) }}" class="btn btn-block btn-sm btn-primary">Detalles</a>
                                 </div>
                             </div>
 
                             <div class="card-body">
-                                <h3 class="card-title">{{$platform->name}}</h3>
-                                <p class="card-text">{{$platform->description}}.</p>
+                                <h3 class="card-title">{{$game->name}}</h3>
+                                <p class="card-text shorten-text-index">{{$game->description}}.</p>
                             </div>
 
                         </figure>
@@ -66,7 +74,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('platforms.store') }}" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('games.store') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group row">
@@ -91,11 +99,11 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="genre_id" class="col-3 col-lg-2 col-form-label text-right">Empresa</label>
+                            <label for="genre_id" class="col-3 col-lg-2 col-form-label text-right">Género</label>
                             <div class="col-9 col-lg-10">
-                                <select name="company_id" class="form-control" id="input-select" placeholder="Seleccione un género" required="yes">
-                                    @foreach($companies as $company)
-                                        <option value="{{ $company->id }}"> {{ $company->name }} </option>
+                                <select name="genre_id" class="form-control" id="input-select" placeholder="Seleccione un género" required="yes">
+                                    @foreach($genres as $genre)
+                                        <option value="{{ $genre->id }}"> {{ $genre->name }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -129,5 +137,17 @@
             </div>
         </div>
     </div>
-
 @stop
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous">
+
+</script>
+<script !src="">
+    $(document).ready(function() {
+        $('#select2').select2();
+    })
+</script>

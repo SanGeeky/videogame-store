@@ -136,14 +136,7 @@
                                 </div>
                                 <a class="dropdown-item" href="#"><i class="fas fa-user mr-2"></i>Account</a>
                                 <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
-                                <!-- <a class="dropdown-item" href="{{ url('/logout') }}"><i class="fas fa-power-off mr-2"></i>Logout</a> -->
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-power-off mr-2"></i>Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
+                                <a class="dropdown-item" href="#"><i class="fas fa-power-off mr-2"></i>Logout</a>
                             </div>
                         </li>
                     </ul>
@@ -173,6 +166,10 @@
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
                             <li class="nav-item ">
+                                <a class="nav-link active" href="{{url('characters')}}"  ><i class="fa fa-fw fa-user-circle"></i>Characters <span class="badge badge-success">6</span></a>
+                                <div id="submenu-1" class="collapse submenu" style=""></div>
+                            </li>
+                            <li class="nav-item ">
                                 <a class="nav-link active" href="{{url('genres')}}"  ><i class="fa fa-fw fa-list-alt"></i>Genres <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
@@ -184,19 +181,14 @@
                                 <a class="nav-link active" href="{{url('companies')}}"  ><i class="fa fa-fw fa-building"></i>Companies <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
-                            @if(Auth::user()->isAdmin())
-                            <li class="nav-item ">
-                                <a class="nav-link active" href="{{url('codes')}}"  ><i class="fa fa-fw fa-code"></i>Codes <span class="badge badge-success">6</span></a>
-                                <div id="submenu-1" class="collapse submenu" style=""></div>
-                            @endif
                             <li class="nav-item ">
                                 <a class="nav-link active" href="{{url('reviews')}}"  ><i class="fa fa-fw fa-file"></i>Reviews <span class="badge badge-success">6</span></a>
                                 <div id="submenu-1" class="collapse submenu" style=""></div>
                             </li>
-                            @if(Auth::User()->role == User::ROLE_CLIENT)
-                                <li class="nav-divider">
-                                    Sales
-                                </li>
+                            <li class="nav-divider">
+                                Sales
+                            </li>
+                            @if(Auth::User()->role == 2)
                                 <li class="nav-item">
                                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6">
                                         <i class="fas fa-fw fa-heart"></i> My Games </a>
@@ -205,7 +197,7 @@
                                     <a class="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-6" aria-controls="submenu-6"><i class="fas fa-fw fa-list-ol"></i> My Wishlist </a>
                                 </li>
                             @else
-                                <h4>You're an admin</h4>
+                                <h4>Usted noooo</h4>
                             @endif
                         </ul>
                     </div>
@@ -250,7 +242,7 @@
 
                 </div>
             </div>
-
+            
         </div>
         <!-- ============================================================== -->
         <!-- end wrapper  -->
@@ -290,38 +282,6 @@
     <script src="{{ url('assets/concept_dashboard/vendor/slimscroll/jquery.slimscroll.js') }}"></script>
     <!-- main js -->
     <script src="{{ url('assets/concept_dashboard/libs/js/main-js.js') }}"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-    <script>
-        var showChar = 300;
-        var ellipsestext = "...";
-        var moretext = "See More";
-        var lesstext = "See Less";
-        $('.comments-space').each(function () {
-            var content = $(this).html();
-            if (content.length > showChar) {
-                var show_content = content.substr(0, showChar);
-                var hide_content = content.substr(showChar, content.length - showChar);
-                var html = show_content + '<span class="moreelipses">' + ellipsestext + '</span><span class="remaining-content"><span>' + hide_content + '</span>&nbsp;&nbsp;<a href="" class="morelink">' + moretext + '</a></span>';
-                $(this).html(html);
-            }
-        });
-
-        $(".morelink").click(function () {
-            if ($(this).hasClass("less")) {
-                $(this).removeClass("less");
-                $(this).html(moretext);
-            } else {
-                $(this).addClass("less");
-                $(this).html(lesstext);
-            }
-            $(this).parent().prev().toggle();
-            $(this).prev().toggle();
-            return false;
-        });
-    </script>
 
     <!-- CHART LIBS DISABLED BECAUSE THEY AREN'T USED -->
 

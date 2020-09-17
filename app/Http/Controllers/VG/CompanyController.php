@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\VG;
 
+use App\Companies;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = "Any company get :)";
-        return view('vg.company.index',array('companiesArray' => $companies));
+        $companies = Companies::all();
+        //dd($genre);
+        //Console Log en la Pagina para mostrar los datos
+        return view("vg.company.index", compact('companies'));
     }
 
     /**
@@ -25,7 +28,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view("vg.company.create");
     }
 
     /**
@@ -36,7 +39,24 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $company = new Companies();
+        $company->name = $request->input('name');
+        $company->description = $request->description;
+        $company->website = $request->website;
+
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $fileName = $company->name.'.'.$extension;
+
+            $file = $request->file('image');
+            $file->move(public_path().'/images/companies/', $fileName);
+
+            $company->image = $fileName;
+        }
+
+        $company -> save();
+        return redirect()->route('companies.index');
     }
 
     /**
@@ -47,8 +67,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $company = "Null company for now :) ";
-        return view('vg.company.show',array('company' => $company,'id'=>$id));
+        //
     }
 
     /**
@@ -59,8 +78,8 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $company = "Null company for now :) ";
-        return view('vg.company.edit',array('company' => $company,'id'=>$id));
+        $companies = Companies::findOrFail($id);
+        return view("vg.company.edit", compact('companies'));
     }
 
     /**
@@ -72,7 +91,24 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $company = Companies::findOrFail($id);
+        $company->name = $request->input('name');
+        $company->description = $request->description;
+        $company->website = $request->website;
+
+        if($request->hasFile('image'))
+        {
+            $extension = $request->image->getClientOriginalExtension();
+            $fileName = $company->name.'.'.$extension;
+
+            $file = $request->file('image');
+            $file->move(public_path().'/images/companies/', $fileName);
+
+            $company->image = $fileName;
+        }
+
+        $company -> update();
+        return redirect()->route('companies.index');
     }
 
     /**
@@ -83,6 +119,9 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $company  = Companies::findOrFail($id);
+        $company ->delete();
+
+        return redirect()->route('companies.index');
     }
 }

@@ -11,14 +11,14 @@
                 @foreach($genres as $genre)
                 <option value="{{ $genre->id }}"> {{ $genre->name }} </option>
                 @endforeach
-            </select>        
+            </select>
         </div>
         @if(Auth::user()->isAdmin())
         <div class="col-md-6">
             <button type="button" class="btn btn-primary add-button" data-toggle="modal" data-target="#exampleModal">Añadir</button>
         </div>
         @endif
-        
+
     </div>
 
     <div class="row">
@@ -30,14 +30,14 @@
                     <div class="figure-img">
 
                         <div class="small_img_container">
-                            @if(!is_null($game->image))
-                            <img class="img-fluid small_image" src="/storage/{{$game->image}}">
+                            @if(strstr( $game->image, 'http' ) == true )
+                            <img class="img-fluid small_image" src="{{$game->image}}">
                             @else
-                            <img class="img-fluid small_image" src="/images/gamepad.png">
+                            <img class="img-fluid small_image" src="{{ asset('images/games/'.$game->image) }}">
                             @endif
                         </div>
 
-                        
+
                         <div class="figure-tools">
                             <a href="#" class="tile tile-circle tile-sm mr-auto">
                                 <span class="oi-data-transfer-download"></span></a>
@@ -50,7 +50,7 @@
 
                         <div class="card-body">
                             <h3 class="card-title">{{$game->name}}</h3>
-                            <p class="card-text">{{$game->description}}.</p>
+                            <p class="card-text shorten-text-index">{{$game->description}}.</p>
                         </div>
 
                     </figure>
@@ -92,9 +92,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="original_release_date" class="col-3 col-lg-2 col-form-label text-right">Lanzamiento</label>
+                        <label for="release_date" class="col-3 col-lg-2 col-form-label text-right">Lanzamiento</label>
                         <div class="col-9 col-lg-10">
-                            <input id="original_release_date" name="original_release_date" required="yes" placeholder="Fecha de lanzamiento" class="form-control">
+                            <input id="release_date" name="release_date" required="yes" placeholder="Fecha de lanzamiento" class="form-control">
                         </div>
                     </div>
 
@@ -118,13 +118,13 @@
 
                     <div class="form-group row">
                         <label for="image" class="col-3 col-lg-2 col-form-label text-right"></label>
-                        <div class="col-9 col-lg-10">                            
+                        <div class="col-9 col-lg-10">
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="image" name="image">
                                 <label class="custom-file-label" for="image">Imagen</label>
                             </div>
                         </div>
-                    </div>                   
+                    </div>
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Guardar</button>

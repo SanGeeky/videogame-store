@@ -46,11 +46,15 @@ class GameController extends Controller
         if($request->hasFile('image'))
         {
             $extension = $request->image->getClientOriginalExtension();
-            $fileName = $g->id.'.'.$extension;
-            $request->image->storeAs('public',$fileName);
+            $fileName = $g->name.'.'.$extension;
+
+            $file = $request->file('image');
+            $file->move(public_path().'/images/games/', $fileName);
+
             $g->image = $fileName;
         }
-        $g->original_release_date = $request->original_release_date;
+
+        $g->release_date = $request->release_date;
         $g->genre_id = $request->genre_id;
         $g -> save();
         return redirect()->route('games.index');
@@ -65,7 +69,7 @@ class GameController extends Controller
     public function show($id)
     {
         $game = Videogames::findOrFail($id);
-        return view('vg.game.show',array('game' => $game,'id'=>$id));
+        return view('vg.game.show',compact('game'));
     }
 
     /**
@@ -98,10 +102,13 @@ class GameController extends Controller
         {
             $extension = $request->image->getClientOriginalExtension();
             $fileName = $g->id.'.'.$extension;
-            $request->image->storeAs('public',$fileName);
+
+            $file = $request->file('image');
+            $file->move(public_path().'/images/games/', $fileName);
+
             $g->image = $fileName;
         }
-        $g->original_release_date = $request->original_release_date;
+        $g->release_date = $request->release_date;
         $g->genre_id = $request->genre_id;
         $g -> save();
         return $this->index();

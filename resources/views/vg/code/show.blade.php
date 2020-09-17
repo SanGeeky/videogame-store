@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
-@section('title') Register Company @stop
+@section('title') Code details @stop
 
 @section('content')
-
-
+    Code
 @stop

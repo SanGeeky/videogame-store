@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGenresTable extends Migration
+class CreateGamePlatformsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,16 @@ class CreateGenresTable extends Migration
      */
     public function up()
     {
-        Schema::create('genres', function (Blueprint $table) {
+        Schema::create('game_platforms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 100);
-            $table->longText('description')->nullable();
-            $table->string('image', 200)->nullable();
+
+            $table->unsignedBigInteger('game_id');
+            $table->unsignedBigInteger('platform_id');
+
+            $table->foreign('game_id')->references('id')->on('games');
+            $table->foreign('platform_id')->references('id')->on('platforms');
+
+
             $table->timestamps();
         });
     }
@@ -29,6 +34,6 @@ class CreateGenresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('genres');
+        Schema::dropIfExists('game_platforms');
     }
 }

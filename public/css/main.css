@@ -7,14 +7,14 @@
 .fill img {
     /*flex-shrink: 0;*/
     /*min-width: 100%;*/
-    min-height: 100%;
+    /*min-height: 100%;*/
     max-width: 100%;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
+    /*top: 0px;*/
+    /*left: 0px;*/
+    /*bottom: 0px;*/
     /*object-fit: cover;*/
     overflow: hidden;
-    position:absolute; 
+    /*position:absolute; */
 }
 
 .separated {
@@ -42,4 +42,33 @@
 {
     float: right; 
     margin-bottom: 10px;
+}
+
+.shorten-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+  resize: horizontal;
+}
+
+.shorten-text-index {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;  
+  resize: horizontal;
+}
+
+.complete{
+    display:none;
+}
+
+.remaining-content span {
+    display:none;
+}
+
+.center-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /*width: 40%;*/
 }

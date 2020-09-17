@@ -11,5 +11,9 @@ Route::group(['middleware' => 'auth'], function(){
         'genres' => 'VG\GenreController',
         'platforms' => 'VG\PlatformController',
         'reviews' => 'VG\ReviewController',
+        'codes' => 'VG\CodeController',
+        'usergames' => 'UserLists',
     ]);
+    Route::put('purchase', 'VG\CodeController@purchase')->name('purchase');
+
 });
