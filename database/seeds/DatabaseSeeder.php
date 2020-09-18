@@ -413,13 +413,11 @@ class DatabaseSeeder extends Seeder
 
     array(
       'name' => 'Pathfinder Online',
-      'aliases' => '',
-      'description' => '',
+      'aliases' => 'path',
+      'description' => 'MMORPG under development, based on the Pathfinder Roleplaying Game. Completion of development is uncertain due to layoffs of most of the development team and no major publishers signed',
       'image' => 'https://www.giantbomb.com/api/image/screen_kubrick/2406338-pfo_logo_big.png',
       'release_date' => '',
       'genre_id' => 2,
-
-
     ),
 
     array(
@@ -1001,20 +999,20 @@ class DatabaseSeeder extends Seeder
     private function seedGames()
     {
         DB::table('games')->delete();
-        foreach ($this->arrayGames as $games) {
+        foreach ($this->arrayGames as $vgame) {
             $game = new Videogames();
 
-            $game->name = $games['name'];
+            $game->name = $vgame['name'];
 
-            $game->aliases = $games['aliases'];
+            $game->aliases = $vgame['aliases'];
 
-            $game->description = $games['description'];
+            $game->description = $vgame['description'];
 
-            $game->image = $games['image'];
+            $game->image = $vgame['image'];
 
-            //$game->release_date = $games['release_date'];
+            //$game->release_date = $vgame['release_date'];
 
-            $game->genre_id = $games['genre_id'];
+            $game->genre_id = $vgame['genre_id'];
 
             $game->save();
         }
