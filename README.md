@@ -1,6 +1,9 @@
 # Laravel VideoGame Store
 
+Autors
 
+- Juan Pablo Botina
+- David Santiago Pinchao
 
 ## Screenshots
 
